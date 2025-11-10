@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Windows.Forms;
 
 namespace admindash
@@ -22,12 +22,12 @@ namespace admindash
 
                     if (result == DialogResult.OK)
                     {
-                        // After creating account ? go to LoginForm
+                        // After creating account → go to LoginForm
                         using (var login = new Login())
                         {
                             if (login.ShowDialog() == DialogResult.OK)
                             {
-                                Application.Run(new Form1()); // your main form
+                                Application.Run(new dashboard()); // your main form
                             }
                         }
                     }
@@ -40,7 +40,7 @@ namespace admindash
                 {
                     if (login.ShowDialog() == DialogResult.OK)
                     {
-                        Application.Run(new Form1());
+                        Application.Run(new dashboard());
                     }
                 }
             }

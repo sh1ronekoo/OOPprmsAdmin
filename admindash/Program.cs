@@ -1,24 +1,47 @@
+using System;
+using System.Windows.Forms;
+
 namespace admindash
 {
     internal static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
-            // Show login first; only run the dashboard when login succeeds
-            using (var login = new LoginForm())
+            // Check if any accounts exist in DB
+            bool hasAccount = DatabaseHelper.HasAnyAccount(); // You will create this method
+
+            if (!hasAccount)
             {
-                var result = login.ShowDialog();
-                if (result == System.Windows.Forms.DialogResult.OK)
+                // Open CreateAccount Form
+                using (var createAcc = new CreateAccount())
                 {
-                    Application.Run(new Form1());
+                    var result = createAcc.ShowDialog();
+
+                    if (result == DialogResult.OK)
+                    {
+                        // After creating account ? go to LoginForm
+                        using (var login = new Login())
+                        {
+                            if (login.ShowDialog() == DialogResult.OK)
+                            {
+                                Application.Run(new Form1()); // your main form
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                // Normal login flow
+                using (var login = new Login())
+                {
+                    if (login.ShowDialog() == DialogResult.OK)
+                    {
+                        Application.Run(new Form1());
+                    }
                 }
             }
         }

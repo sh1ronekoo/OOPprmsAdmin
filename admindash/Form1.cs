@@ -50,7 +50,7 @@ namespace admindash
 
         private void AppendLogToUI(string message)
         {
-            if (richTextBoxLogs.InvokeRequired)
+            /*if (richTextBoxLogs.InvokeRequired)
             {
                 richTextBoxLogs.BeginInvoke(new Action(() => AppendLogToUI(message)));
                 return;
@@ -69,7 +69,7 @@ namespace admindash
 
             // scroll to end
             richTextBoxLogs.SelectionStart = richTextBoxLogs.Text.Length;
-            richTextBoxLogs.ScrollToCaret();
+            richTextBoxLogs.ScrollToCaret();*/
         }
 
         private void BtnDashboard_Click(object? sender, EventArgs e)

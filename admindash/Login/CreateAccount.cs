@@ -18,6 +18,7 @@ namespace admindash
             InitializeComponent();
         }
 
+
         private void btnCreateAccount_Click(object sender, EventArgs e)
         {
             string username = txtCreateUsername.Text.Trim();
@@ -83,6 +84,11 @@ namespace admindash
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
         {
 
         }

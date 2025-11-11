@@ -52,7 +52,7 @@ namespace admindash
 
                             // VERY IMPORTANT: report success to Program.cs
                             this.DialogResult = DialogResult.OK;
-                            this.Close();
+                            this.Hide();
                         }
                         else
                         {

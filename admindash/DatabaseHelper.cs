@@ -5,7 +5,7 @@ namespace admindash
 {
     public static class DatabaseHelper
     {
-        private static string connectionString = "Server=oop-prms-iqperia06-3946oop.e.aivencloud.com;" +
+        public static string connectionString = "Server=oop-prms-iqperia06-3946oop.e.aivencloud.com;" +
                                                  "Port=19631;" +
                                                  "Database=oop_project;" +
                                                  "User ID=avnadmin;" +

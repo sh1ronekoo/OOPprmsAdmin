@@ -45,6 +45,9 @@
             label3 = new Label();
             lblTotalBookings = new Label();
             label1 = new Label();
+            label2 = new Label();
+            label4 = new Label();
+            label6 = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -67,6 +70,9 @@
             panel1.Controls.Add(lblPending);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(lblTotalBookings);
+            panel1.Controls.Add(label2);
+            panel1.Controls.Add(label6);
+            panel1.Controls.Add(label4);
             panel1.Controls.Add(label1);
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
@@ -76,9 +82,10 @@
             // lblDaily
             // 
             lblDaily.AutoSize = true;
-            lblDaily.Font = new Font("Segoe UI", 12F);
-            lblDaily.Location = new Point(595, 124);
+            lblDaily.Font = new Font("Segoe UI", 11.5F);
+            lblDaily.Location = new Point(436, 238);
             lblDaily.Name = "lblDaily";
+            lblDaily.RightToLeft = RightToLeft.Yes;
             lblDaily.Size = new Size(19, 21);
             lblDaily.TabIndex = 0;
             lblDaily.Text = "0";
@@ -86,9 +93,10 @@
             // lblMonthly
             // 
             lblMonthly.AutoSize = true;
-            lblMonthly.Font = new Font("Segoe UI", 12F);
-            lblMonthly.Location = new Point(595, 224);
+            lblMonthly.Font = new Font("Segoe UI", 11.5F);
+            lblMonthly.Location = new Point(436, 281);
             lblMonthly.Name = "lblMonthly";
+            lblMonthly.RightToLeft = RightToLeft.Yes;
             lblMonthly.Size = new Size(19, 21);
             lblMonthly.TabIndex = 0;
             lblMonthly.Text = "0";
@@ -96,9 +104,10 @@
             // lblWeekly
             // 
             lblWeekly.AutoSize = true;
-            lblWeekly.Font = new Font("Segoe UI", 12F);
-            lblWeekly.Location = new Point(595, 176);
+            lblWeekly.Font = new Font("Segoe UI", 11.5F);
+            lblWeekly.Location = new Point(436, 260);
             lblWeekly.Name = "lblWeekly";
+            lblWeekly.RightToLeft = RightToLeft.Yes;
             lblWeekly.Size = new Size(19, 21);
             lblWeekly.TabIndex = 0;
             lblWeekly.Text = "0";
@@ -106,120 +115,126 @@
             // lblCancelled
             // 
             lblCancelled.AutoSize = true;
-            lblCancelled.Font = new Font("Segoe UI", 12F);
-            lblCancelled.Location = new Point(235, 329);
+            lblCancelled.Font = new Font("Segoe UI", 11.25F);
+            lblCancelled.Location = new Point(247, 320);
             lblCancelled.Name = "lblCancelled";
-            lblCancelled.Size = new Size(19, 21);
+            lblCancelled.Size = new Size(17, 20);
             lblCancelled.TabIndex = 0;
             lblCancelled.Text = "0";
             // 
             // label13
             // 
             label13.AutoSize = true;
-            label13.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label13.Location = new Point(428, 124);
+            label13.Font = new Font("Segoe UI", 11.5F);
+            label13.Location = new Point(569, 238);
             label13.Name = "label13";
-            label13.Size = new Size(53, 21);
+            label13.RightToLeft = RightToLeft.Yes;
+            label13.Size = new Size(51, 21);
             label13.TabIndex = 0;
             label13.Text = "DAILY";
+            label13.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label15
             // 
             label15.AutoSize = true;
-            label15.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label15.Location = new Point(428, 224);
+            label15.Font = new Font("Segoe UI", 11.5F);
+            label15.Location = new Point(537, 280);
             label15.Name = "label15";
-            label15.Size = new Size(86, 21);
+            label15.RightToLeft = RightToLeft.Yes;
+            label15.Size = new Size(83, 21);
             label15.TabIndex = 0;
             label15.Text = "MONTHLY";
+            label15.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label11
             // 
             label11.AutoSize = true;
-            label11.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label11.Location = new Point(428, 176);
+            label11.Font = new Font("Segoe UI", 11.5F);
+            label11.Location = new Point(554, 259);
             label11.Name = "label11";
-            label11.Size = new Size(67, 21);
+            label11.RightToLeft = RightToLeft.Yes;
+            label11.Size = new Size(66, 21);
             label11.TabIndex = 0;
             label11.Text = "WEEKLY";
+            label11.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label9.Location = new Point(68, 329);
+            label9.Font = new Font("Segoe UI", 11.25F);
+            label9.Location = new Point(80, 320);
             label9.Name = "label9";
-            label9.Size = new Size(96, 21);
+            label9.Size = new Size(89, 20);
             label9.TabIndex = 0;
             label9.Text = "CANCELLED";
             // 
             // lblDeclined
             // 
             lblDeclined.AutoSize = true;
-            lblDeclined.Font = new Font("Segoe UI", 12F);
-            lblDeclined.Location = new Point(235, 271);
+            lblDeclined.Font = new Font("Segoe UI", 11.25F);
+            lblDeclined.Location = new Point(247, 300);
             lblDeclined.Name = "lblDeclined";
-            lblDeclined.Size = new Size(19, 21);
+            lblDeclined.Size = new Size(17, 20);
             lblDeclined.TabIndex = 0;
             lblDeclined.Text = "0";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label7.Location = new Point(68, 271);
+            label7.Font = new Font("Segoe UI", 11.25F);
+            label7.Location = new Point(80, 300);
             label7.Name = "label7";
-            label7.Size = new Size(83, 21);
+            label7.Size = new Size(78, 20);
             label7.TabIndex = 0;
             label7.Text = "DECLINED";
             // 
             // lblAccepted
             // 
             lblAccepted.AutoSize = true;
-            lblAccepted.Font = new Font("Segoe UI", 12F);
-            lblAccepted.Location = new Point(235, 224);
+            lblAccepted.Font = new Font("Segoe UI", 11.25F);
+            lblAccepted.Location = new Point(247, 280);
             lblAccepted.Name = "lblAccepted";
-            lblAccepted.Size = new Size(19, 21);
+            lblAccepted.Size = new Size(17, 20);
             lblAccepted.TabIndex = 0;
             lblAccepted.Text = "0";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label5.Location = new Point(68, 224);
+            label5.Font = new Font("Segoe UI", 11.25F);
+            label5.Location = new Point(80, 280);
             label5.Name = "label5";
-            label5.Size = new Size(86, 21);
+            label5.Size = new Size(80, 20);
             label5.TabIndex = 0;
             label5.Text = "ACCEPTED";
             // 
             // lblPending
             // 
             lblPending.AutoSize = true;
-            lblPending.Font = new Font("Segoe UI", 12F);
-            lblPending.Location = new Point(235, 176);
+            lblPending.Font = new Font("Segoe UI", 11.25F);
+            lblPending.Location = new Point(247, 260);
             lblPending.Name = "lblPending";
-            lblPending.Size = new Size(19, 21);
+            lblPending.Size = new Size(17, 20);
             lblPending.TabIndex = 0;
             lblPending.Text = "0";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label3.Location = new Point(68, 176);
+            label3.Font = new Font("Segoe UI", 11.25F);
+            label3.Location = new Point(80, 260);
             label3.Name = "label3";
-            label3.Size = new Size(78, 21);
+            label3.Size = new Size(72, 20);
             label3.TabIndex = 0;
             label3.Text = "PENDING";
             // 
             // lblTotalBookings
             // 
             lblTotalBookings.AutoSize = true;
-            lblTotalBookings.Font = new Font("Segoe UI", 12F);
-            lblTotalBookings.Location = new Point(235, 124);
+            lblTotalBookings.Font = new Font("Segoe UI", 26.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblTotalBookings.Location = new Point(151, 180);
             lblTotalBookings.Name = "lblTotalBookings";
-            lblTotalBookings.Size = new Size(19, 21);
+            lblTotalBookings.Size = new Size(39, 47);
             lblTotalBookings.TabIndex = 0;
             lblTotalBookings.Text = "0";
             // 
@@ -227,11 +242,41 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label1.Location = new Point(68, 124);
+            label1.Location = new Point(104, 228);
             label1.Name = "label1";
             label1.Size = new Size(141, 21);
             label1.TabIndex = 0;
             label1.Text = "TOTAL BOOKINGS";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(53, 43);
+            label2.Name = "label2";
+            label2.Size = new Size(250, 32);
+            label2.TabIndex = 0;
+            label2.Text = "REPORTS OVERVIEW";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
+            label4.Location = new Point(80, 155);
+            label4.Name = "label4";
+            label4.Size = new Size(173, 25);
+            label4.TabIndex = 0;
+            label4.Text = "BOOKING STATUS";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
+            label6.Location = new Point(396, 155);
+            label6.Name = "label6";
+            label6.Size = new Size(224, 25);
+            label6.TabIndex = 0;
+            label6.Text = "PERIODIC BREAKDOWN";
             // 
             // ReportsDashboard
             // 
@@ -266,5 +311,8 @@
         private Label label5;
         private Label lblPending;
         private Label label3;
+        private Label label2;
+        private Label label4;
+        private Label label6;
     }
 }

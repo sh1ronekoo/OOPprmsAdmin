@@ -52,7 +52,7 @@ namespace admindash
 
                             // VERY IMPORTANT: report success to Program.cs
                             this.DialogResult = DialogResult.OK;
-                            this.Hide();
+                            this.Close();
                         }
                         else
                         {
@@ -84,6 +84,26 @@ namespace admindash
 
                 MessageBox.Show("Account created! Please log in.");
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtUsername_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

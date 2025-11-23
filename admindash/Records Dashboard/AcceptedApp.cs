@@ -127,28 +127,39 @@ namespace admindash.Records_Dashboard
                 MessageBox.Show("Please select an appointment first.");
                 return;
             }
-            UpdateBookingStatus(selectedAppointmentId, "Completed");
+
+            // Confirmation Prompt
+            var confirmResult = MessageBox.Show(
+                $"Are you sure you want to mark appointment No. {selectedAppointmentId} as COMPLETED?",
+                "Confirm Completion",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (confirmResult == DialogResult.Yes)
+            {
+                UpdateBookingStatus(selectedAppointmentId, "Completed");
+            }
         }
 
-        // Method restored as requested
+        // Assuming a button named 'btnCancel' exists to cancel an accepted appointment
         private void btnCancelBook_Click(object sender, EventArgs e)
         {
-            // Placeholder method for the button click
-            // In the context of AcceptedApp, this might cancel the selected appointment.
-            // If the UI is bound to this, this method will resolve the "does not exist" error.
             if (selectedAppointmentId == -1)
             {
-                MessageBox.Show("Please select an appointment to cancel first.");
+                MessageBox.Show("Please select an appointment first.");
                 return;
             }
 
-            DialogResult result = MessageBox.Show(
-                $"Are you sure you want to cancel appointment #{selectedAppointmentId}?",
+            // Confirmation Prompt
+            var confirmResult = MessageBox.Show(
+                $"Are you sure you want to CANCEL appointment No. {selectedAppointmentId}?",
                 "Confirm Cancellation",
                 MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
+                MessageBoxIcon.Warning
+            );
 
-            if (result == DialogResult.Yes)
+            if (confirmResult == DialogResult.Yes)
             {
                 UpdateBookingStatus(selectedAppointmentId, "Cancelled");
             }

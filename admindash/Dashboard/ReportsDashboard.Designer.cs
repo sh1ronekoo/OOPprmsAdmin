@@ -91,7 +91,7 @@
             btnExportPdf.Name = "btnExportPdf";
             btnExportPdf.Size = new Size(94, 23);
             btnExportPdf.TabIndex = 1;
-            btnExportPdf.Text = "Extract to PDF";
+            btnExportPdf.Text = "Extract to CSV";
             btnExportPdf.UseVisualStyleBackColor = true;
             btnExportPdf.Click += btnExportPdf_Click;
             // 

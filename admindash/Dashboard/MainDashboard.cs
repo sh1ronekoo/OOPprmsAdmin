@@ -154,7 +154,18 @@ namespace admindash.Dashboard
                 return;
             }
 
-            UpdateBookingStatus(selectedAppointmentId, "Accepted");
+            // Confirmation Prompt
+            var confirmResult = MessageBox.Show(
+                $"Are you sure you want to ACCEPT appointment No. {selectedAppointmentId}?",
+                "Confirm Acceptance",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (confirmResult == DialogResult.Yes)
+            {
+                UpdateBookingStatus(selectedAppointmentId, "Accepted");
+            }
         }
 
         private void btnDeclineAppointment_Click(object sender, EventArgs e)
@@ -165,7 +176,18 @@ namespace admindash.Dashboard
                 return;
             }
 
-            UpdateBookingStatus(selectedAppointmentId, "Declined");
+            // Confirmation Prompt
+            var confirmResult = MessageBox.Show(
+                $"Are you sure you want to DECLINE appointment No. {selectedAppointmentId}?",
+                "Confirm Decline",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (confirmResult == DialogResult.Yes)
+            {
+                UpdateBookingStatus(selectedAppointmentId, "Declined");
+            }
         }
 
         private void UpdateBookingStatus(int appointmentNumber, string status)

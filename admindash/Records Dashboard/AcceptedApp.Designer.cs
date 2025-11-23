@@ -1,6 +1,11 @@
-﻿namespace admindash.Records_Dashboard
+﻿#nullable disable
+using System;
+using System.Drawing;
+using System.Windows.Forms;
+
+namespace admindash.Records_Dashboard
 {
-    partial class AcceptedApp
+    partial class AcceptedApp : Form
     {
         /// <summary>
         /// Required designer variable.
@@ -37,14 +42,13 @@
             // 
             listViewAccepted.Location = new Point(0, 0);
             listViewAccepted.Name = "listViewAccepted";
-            listViewAccepted.Size = new Size(578, 427);
+            listViewAccepted.Size = new Size(710, 427);
             listViewAccepted.TabIndex = 0;
             listViewAccepted.UseCompatibleStateImageBehavior = false;
-            listViewAccepted.SelectedIndexChanged += listViewAccepted_SelectedIndexChanged;
             // 
             // btnCompleteBook
             // 
-            btnCompleteBook.Location = new Point(584, 387);
+            btnCompleteBook.Location = new Point(716, 394);
             btnCompleteBook.Name = "btnCompleteBook";
             btnCompleteBook.Size = new Size(75, 23);
             btnCompleteBook.TabIndex = 2;
@@ -54,7 +58,7 @@
             // 
             // btnCancelBook
             // 
-            btnCancelBook.Location = new Point(584, 358);
+            btnCancelBook.Location = new Point(716, 365);
             btnCancelBook.Name = "btnCancelBook";
             btnCancelBook.Size = new Size(75, 23);
             btnCancelBook.TabIndex = 3;
@@ -66,7 +70,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(668, 427);
+            ClientSize = new Size(798, 427);
             Controls.Add(btnCompleteBook);
             Controls.Add(btnCancelBook);
             Controls.Add(listViewAccepted);

@@ -36,7 +36,7 @@
             listViewDeclined.BorderStyle = BorderStyle.FixedSingle;
             listViewDeclined.Location = new Point(0, 0);
             listViewDeclined.Name = "listViewDeclined";
-            listViewDeclined.Size = new Size(668, 427);
+            listViewDeclined.Size = new Size(798, 427);
             listViewDeclined.TabIndex = 0;
             listViewDeclined.UseCompatibleStateImageBehavior = false;
             // 
@@ -44,7 +44,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(668, 427);
+            ClientSize = new Size(798, 427);
             Controls.Add(listViewDeclined);
             FormBorderStyle = FormBorderStyle.None;
             Name = "DeclinedApp";

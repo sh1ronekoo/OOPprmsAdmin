@@ -31,8 +31,8 @@ namespace admindash
             }
             catch (Exception ex)
             {
-                // Optional: handle connection errors
-                Console.WriteLine("Database error: " + ex.Message);
+                // Log database error
+                Logger.Error($"Database check for existing accounts failed: {ex.Message}");
                 exists = false;
             }
 

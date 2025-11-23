@@ -6,12 +6,8 @@ namespace admindash
 {
     public partial class Login : Form
     {
-        string connectionString = "Server=oop-prms-iqperia06-3946oop.e.aivencloud.com;" +
-                                  "Port=19631;" +
-                                  "Database=oop_project;" +
-                                  "User ID=avnadmin;" +
-                                  "Password=AVNS_DC-Fjd1udeFkVwK429X;" +
-                                  "SslMode=Required;";
+        // Now using the centralized connection string from DatabaseHelper
+        string connectionString = DatabaseHelper.connectionString;
 
         public Login()
         {
@@ -47,15 +43,13 @@ namespace admindash
 
                         if (count > 0)
                         {
-                            MessageBox.Show("Login successful!", "Success",
-                                MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                            // VERY IMPORTANT: report success to Program.cs
+                            Logger.Info($"User {username} logged in successfully.");
                             this.DialogResult = DialogResult.OK;
                             this.Close();
                         }
                         else
                         {
+                            Logger.Warn($"Failed login attempt for user: {username}");
                             MessageBox.Show("Invalid username or password.",
                                 "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
@@ -64,6 +58,7 @@ namespace admindash
             }
             catch (Exception ex)
             {
+                Logger.Error($"Database error during login for {username}: {ex.Message}");
                 MessageBox.Show("Error connecting to database:\n" + ex.Message,
                     "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -84,6 +79,8 @@ namespace admindash
 
                 MessageBox.Show("Account created! Please log in.");
             }
+            // Ensure the form is disposed of
+            create.Dispose();
         }
 
         private void label1_Click(object sender, EventArgs e)

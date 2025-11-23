@@ -50,14 +50,14 @@
             btnCancelled.Controls.Add(btnAll);
             btnCancelled.Location = new Point(0, 0);
             btnCancelled.Name = "btnCancelled";
-            btnCancelled.Size = new Size(750, 528);
+            btnCancelled.Size = new Size(869, 505);
             btnCancelled.TabIndex = 2;
             // 
             // panel2
             // 
             panel2.Location = new Point(36, 63);
             panel2.Name = "panel2";
-            panel2.Size = new Size(702, 427);
+            panel2.Size = new Size(798, 427);
             panel2.TabIndex = 2;
             // 
             // btnDeclined
@@ -114,7 +114,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(750, 528);
+            ClientSize = new Size(866, 502);
             Controls.Add(btnCancelled);
             FormBorderStyle = FormBorderStyle.None;
             Name = "RecordsDashboard";

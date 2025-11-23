@@ -35,15 +35,16 @@
             // 
             listViewCompleted.Location = new Point(0, 0);
             listViewCompleted.Name = "listViewCompleted";
-            listViewCompleted.Size = new Size(668, 427);
+            listViewCompleted.Size = new Size(798, 427);
             listViewCompleted.TabIndex = 0;
             listViewCompleted.UseCompatibleStateImageBehavior = false;
+            listViewCompleted.SelectedIndexChanged += listViewCompleted_SelectedIndexChanged;
             // 
             // CompletedApp
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(668, 427);
+            ClientSize = new Size(798, 427);
             Controls.Add(listViewCompleted);
             FormBorderStyle = FormBorderStyle.None;
             Name = "CompletedApp";

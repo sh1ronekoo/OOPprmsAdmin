@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            btnExportPdf = new Button();
             lblDaily = new Label();
             lblMonthly = new Label();
             lblWeekly = new Label();
@@ -41,13 +42,15 @@
             label7 = new Label();
             lblAccepted = new Label();
             label5 = new Label();
+            lblCompleted = new Label();
             lblPending = new Label();
+            label8 = new Label();
             label3 = new Label();
             lblTotalBookings = new Label();
-            label1 = new Label();
             label2 = new Label();
-            label4 = new Label();
             label6 = new Label();
+            label4 = new Label();
+            label1 = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -55,6 +58,7 @@
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel1.BackColor = SystemColors.Control;
+            panel1.Controls.Add(btnExportPdf);
             panel1.Controls.Add(lblDaily);
             panel1.Controls.Add(lblMonthly);
             panel1.Controls.Add(lblWeekly);
@@ -67,7 +71,9 @@
             panel1.Controls.Add(label7);
             panel1.Controls.Add(lblAccepted);
             panel1.Controls.Add(label5);
+            panel1.Controls.Add(lblCompleted);
             panel1.Controls.Add(lblPending);
+            panel1.Controls.Add(label8);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(lblTotalBookings);
             panel1.Controls.Add(label2);
@@ -78,6 +84,16 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(750, 528);
             panel1.TabIndex = 1;
+            // 
+            // btnExportPdf
+            // 
+            btnExportPdf.Location = new Point(644, 435);
+            btnExportPdf.Name = "btnExportPdf";
+            btnExportPdf.Size = new Size(94, 23);
+            btnExportPdf.TabIndex = 1;
+            btnExportPdf.Text = "Extract to PDF";
+            btnExportPdf.UseVisualStyleBackColor = true;
+            btnExportPdf.Click += btnExportPdf_Click;
             // 
             // lblDaily
             // 
@@ -116,7 +132,7 @@
             // 
             lblCancelled.AutoSize = true;
             lblCancelled.Font = new Font("Segoe UI", 11.25F);
-            lblCancelled.Location = new Point(247, 320);
+            lblCancelled.Location = new Point(246, 347);
             lblCancelled.Name = "lblCancelled";
             lblCancelled.Size = new Size(17, 20);
             lblCancelled.TabIndex = 0;
@@ -162,7 +178,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 11.25F);
-            label9.Location = new Point(80, 320);
+            label9.Location = new Point(79, 347);
             label9.Name = "label9";
             label9.Size = new Size(89, 20);
             label9.TabIndex = 0;
@@ -172,7 +188,7 @@
             // 
             lblDeclined.AutoSize = true;
             lblDeclined.Font = new Font("Segoe UI", 11.25F);
-            lblDeclined.Location = new Point(247, 300);
+            lblDeclined.Location = new Point(246, 327);
             lblDeclined.Name = "lblDeclined";
             lblDeclined.Size = new Size(17, 20);
             lblDeclined.TabIndex = 0;
@@ -182,7 +198,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 11.25F);
-            label7.Location = new Point(80, 300);
+            label7.Location = new Point(79, 327);
             label7.Name = "label7";
             label7.Size = new Size(78, 20);
             label7.TabIndex = 0;
@@ -192,7 +208,7 @@
             // 
             lblAccepted.AutoSize = true;
             lblAccepted.Font = new Font("Segoe UI", 11.25F);
-            lblAccepted.Location = new Point(247, 280);
+            lblAccepted.Location = new Point(246, 307);
             lblAccepted.Name = "lblAccepted";
             lblAccepted.Size = new Size(17, 20);
             lblAccepted.TabIndex = 0;
@@ -202,27 +218,47 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 11.25F);
-            label5.Location = new Point(80, 280);
+            label5.Location = new Point(79, 307);
             label5.Name = "label5";
             label5.Size = new Size(80, 20);
             label5.TabIndex = 0;
             label5.Text = "ACCEPTED";
             // 
+            // lblCompleted
+            // 
+            lblCompleted.AutoSize = true;
+            lblCompleted.Font = new Font("Segoe UI", 11.25F);
+            lblCompleted.Location = new Point(246, 267);
+            lblCompleted.Name = "lblCompleted";
+            lblCompleted.Size = new Size(17, 20);
+            lblCompleted.TabIndex = 0;
+            lblCompleted.Text = "0";
+            // 
             // lblPending
             // 
             lblPending.AutoSize = true;
             lblPending.Font = new Font("Segoe UI", 11.25F);
-            lblPending.Location = new Point(247, 260);
+            lblPending.Location = new Point(246, 287);
             lblPending.Name = "lblPending";
             lblPending.Size = new Size(17, 20);
             lblPending.TabIndex = 0;
             lblPending.Text = "0";
             // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 11.25F);
+            label8.Location = new Point(79, 267);
+            label8.Name = "label8";
+            label8.Size = new Size(92, 20);
+            label8.TabIndex = 0;
+            label8.Text = "COMPLETED";
+            // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 11.25F);
-            label3.Location = new Point(80, 260);
+            label3.Location = new Point(79, 287);
             label3.Name = "label3";
             label3.Size = new Size(72, 20);
             label3.TabIndex = 0;
@@ -238,16 +274,6 @@
             lblTotalBookings.TabIndex = 0;
             lblTotalBookings.Text = "0";
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label1.Location = new Point(104, 228);
-            label1.Name = "label1";
-            label1.Size = new Size(141, 21);
-            label1.TabIndex = 0;
-            label1.Text = "TOTAL BOOKINGS";
-            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -257,6 +283,16 @@
             label2.Size = new Size(250, 32);
             label2.TabIndex = 0;
             label2.Text = "REPORTS OVERVIEW";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
+            label6.Location = new Point(396, 155);
+            label6.Name = "label6";
+            label6.Size = new Size(224, 25);
+            label6.TabIndex = 0;
+            label6.Text = "PERIODIC BREAKDOWN";
             // 
             // label4
             // 
@@ -268,15 +304,15 @@
             label4.TabIndex = 0;
             label4.Text = "BOOKING STATUS";
             // 
-            // label6
+            // label1
             // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            label6.Location = new Point(396, 155);
-            label6.Name = "label6";
-            label6.Size = new Size(224, 25);
-            label6.TabIndex = 0;
-            label6.Text = "PERIODIC BREAKDOWN";
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            label1.Location = new Point(104, 228);
+            label1.Name = "label1";
+            label1.Size = new Size(141, 21);
+            label1.TabIndex = 0;
+            label1.Text = "TOTAL BOOKINGS";
             // 
             // ReportsDashboard
             // 
@@ -314,5 +350,8 @@
         private Label label2;
         private Label label4;
         private Label label6;
+        private Label lblCompleted;
+        private Label label8;
+        private Button btnExportPdf;
     }
 }

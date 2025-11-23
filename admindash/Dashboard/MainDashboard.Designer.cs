@@ -43,14 +43,14 @@
             panel1.Controls.Add(btnAcceptAppointment);
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(755, 542);
+            panel1.Size = new Size(871, 509);
             panel1.TabIndex = 0;
             // 
             // listViewAppointments
             // 
             listViewAppointments.Location = new Point(38, 42);
             listViewAppointments.Name = "listViewAppointments";
-            listViewAppointments.Size = new Size(587, 333);
+            listViewAppointments.Size = new Size(796, 333);
             listViewAppointments.TabIndex = 2;
             listViewAppointments.UseCompatibleStateImageBehavior = false;
             listViewAppointments.SelectedIndexChanged += listViewAppointments_SelectedIndexChanged;
@@ -79,7 +79,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(750, 528);
+            ClientSize = new Size(866, 502);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "MainDashboard";

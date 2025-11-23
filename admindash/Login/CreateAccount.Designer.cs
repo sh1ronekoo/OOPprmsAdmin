@@ -53,7 +53,7 @@
             txtCreateConfirmPassword.Location = new Point(40, 264);
             txtCreateConfirmPassword.Name = "txtCreateConfirmPassword";
             txtCreateConfirmPassword.Size = new Size(257, 23);
-            txtCreateConfirmPassword.TabIndex = 1;
+            txtCreateConfirmPassword.TabIndex = 2;
             txtCreateConfirmPassword.UseSystemPasswordChar = true;
             // 
             // label1
@@ -107,7 +107,7 @@
             txtCreateUsername.Location = new Point(40, 162);
             txtCreateUsername.Name = "txtCreateUsername";
             txtCreateUsername.Size = new Size(258, 23);
-            txtCreateUsername.TabIndex = 1;
+            txtCreateUsername.TabIndex = 0;
             // 
             // label4
             // 
@@ -123,7 +123,7 @@
             btnCreateAccount.Location = new Point(120, 312);
             btnCreateAccount.Name = "btnCreateAccount";
             btnCreateAccount.Size = new Size(101, 23);
-            btnCreateAccount.TabIndex = 13;
+            btnCreateAccount.TabIndex = 3;
             btnCreateAccount.Text = "Create Account";
             btnCreateAccount.UseVisualStyleBackColor = true;
             btnCreateAccount.Click += btnCreateAccount_Click;

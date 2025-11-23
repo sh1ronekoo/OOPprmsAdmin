@@ -6,12 +6,8 @@ namespace admindash
 {
     public partial class CreateAccount : Form
     {
-        string connectionString = "Server=oop-prms-iqperia06-3946oop.e.aivencloud.com;" +
-                                  "Port=19631;" +
-                                  "Database=oop_project;" +
-                                  "User ID=avnadmin;" +
-                                  "Password=AVNS_DC-Fjd1udeFkVwK429X;" +
-                                  "SslMode=Required;";
+        // Now using the centralized connection string from DatabaseHelper
+        string connectionString = DatabaseHelper.connectionString;
 
         public CreateAccount()
         {
@@ -46,7 +42,7 @@ namespace admindash
                 {
                     conn.Open();
 
-                    // ◀ Check if username already exists
+                    // ◀ Check for duplicate username
                     string checkQuery = "SELECT COUNT(*) FROM login WHERE users = @user";
                     using (MySqlCommand checkCmd = new MySqlCommand(checkQuery, conn))
                     {
@@ -68,6 +64,7 @@ namespace admindash
                         insertCmd.Parameters.AddWithValue("@user", username);
                         insertCmd.Parameters.AddWithValue("@pass", password); // plaintext for now
                         insertCmd.ExecuteNonQuery();
+                        Logger.Info($"New account created for user: {username}");
                     }
                 }
 
@@ -78,6 +75,7 @@ namespace admindash
             }
             catch (Exception ex)
             {
+                Logger.Error($"Error creating account for {username}: {ex.Message}");
                 MessageBox.Show("Error creating account: " + ex.Message,
                     "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

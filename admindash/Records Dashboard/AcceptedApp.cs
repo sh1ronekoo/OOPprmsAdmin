@@ -30,6 +30,15 @@ namespace admindash.Records_Dashboard
             listViewAccepted.Columns.Add("Patient Name", 150);
             listViewAccepted.Columns.Add("Appointment Date & Time", 200);
             listViewAccepted.Columns.Add("Status", 120);
+            // Existing patient columns
+            listViewAccepted.Columns.Add("Gender", 80);
+            listViewAccepted.Columns.Add("Age", 50);
+            listViewAccepted.Columns.Add("DOB", 100);
+            listViewAccepted.Columns.Add("Phone No.", 120);
+            // Newly added columns
+            listViewAccepted.Columns.Add("Email", 120);
+            listViewAccepted.Columns.Add("Medication", 150);
+            listViewAccepted.Columns.Add("Additional Notes", 200);
 
             LoadAcceptedAppointments();
         }
@@ -37,16 +46,17 @@ namespace admindash.Records_Dashboard
         private void LoadAcceptedAppointments()
         {
             listViewAccepted.Items.Clear();
-            selectedAppointmentId = -1; // reset selection
 
             try
             {
                 using (var conn = new MySqlConnection(connectionString))
                 {
                     conn.Open();
-                    string query = "SELECT appointment_number, patient_name, appointment_datetime, status FROM booking WHERE status = 'Accepted' ORDER BY appointment_datetime DESC";
+                    // UPDATED: Added email, current_medication, and additional_notes to the SELECT query
+                    string query = "SELECT appointment_number, patient_name, appointment_datetime, status, gender, age, date_of_birth, phone_number, email, current_medication, additional_notes " +
+                                   "FROM booking WHERE status = 'Accepted' ORDER BY appointment_datetime DESC";
 
-                    using (var cmd = new MySqlCommand(query, conn))
+                    using (var cmd = new MySql.Data.MySqlClient.MySqlCommand(query, conn))
                     using (var reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
@@ -57,10 +67,32 @@ namespace admindash.Records_Dashboard
                             string apptFormatted = apptDate.ToString("yyyy-MM-dd hh:mm tt");
                             string status = reader["status"].ToString();
 
+                            // Patient Info (Existing)
+                            string gender = reader["gender"].ToString();
+                            string age = reader["age"].ToString();
+                            string dob = Convert.ToDateTime(reader["date_of_birth"]).ToString("yyyy-MM-dd");
+                            string phone = reader["phone_number"].ToString();
+
+                            // Patient Info (New)
+                            string email = reader["email"].ToString();
+                            string medication = reader["current_medication"].ToString();
+                            string notes = reader["additional_notes"].ToString();
+
                             ListViewItem item = new ListViewItem(apptNo);
                             item.SubItems.Add(name);
                             item.SubItems.Add(apptFormatted);
                             item.SubItems.Add(status);
+
+                            // Add existing patient subitems
+                            item.SubItems.Add(gender);
+                            item.SubItems.Add(age);
+                            item.SubItems.Add(dob);
+                            item.SubItems.Add(phone);
+
+                            // Add new patient subitems
+                            item.SubItems.Add(email);
+                            item.SubItems.Add(medication);
+                            item.SubItems.Add(notes);
 
                             listViewAccepted.Items.Add(item);
                         }
@@ -73,27 +105,19 @@ namespace admindash.Records_Dashboard
             }
         }
 
-        // Track selection
         private void listViewAccepted_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewAccepted.SelectedItems.Count > 0)
             {
-                selectedAppointmentId = Convert.ToInt32(listViewAccepted.SelectedItems[0].SubItems[0].Text);
+                if (int.TryParse(listViewAccepted.SelectedItems[0].SubItems[0].Text, out int apptId))
+                {
+                    selectedAppointmentId = apptId;
+                }
             }
             else
             {
                 selectedAppointmentId = -1;
             }
-        }
-
-        private void btnCancelBook_Click(object sender, EventArgs e)
-        {
-            if (selectedAppointmentId == -1)
-            {
-                MessageBox.Show("Please select an appointment first.");
-                return;
-            }
-            UpdateBookingStatus(selectedAppointmentId, "Cancelled");
         }
 
         private void btnCompleteBook_Click(object sender, EventArgs e)
@@ -104,6 +128,30 @@ namespace admindash.Records_Dashboard
                 return;
             }
             UpdateBookingStatus(selectedAppointmentId, "Completed");
+        }
+
+        // Method restored as requested
+        private void btnCancelBook_Click(object sender, EventArgs e)
+        {
+            // Placeholder method for the button click
+            // In the context of AcceptedApp, this might cancel the selected appointment.
+            // If the UI is bound to this, this method will resolve the "does not exist" error.
+            if (selectedAppointmentId == -1)
+            {
+                MessageBox.Show("Please select an appointment to cancel first.");
+                return;
+            }
+
+            DialogResult result = MessageBox.Show(
+                $"Are you sure you want to cancel appointment #{selectedAppointmentId}?",
+                "Confirm Cancellation",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                UpdateBookingStatus(selectedAppointmentId, "Cancelled");
+            }
         }
 
         private void UpdateBookingStatus(int appointmentNumber, string newStatus)
@@ -122,7 +170,7 @@ namespace admindash.Records_Dashboard
 
                         if (rows > 0)
                         {
-                            MessageBox.Show($"Appointment {newStatus.ToLower()} successfully.");
+                            MessageBox.Show($"Appointment status changed to '{newStatus}' successfully.");
                             LoadAcceptedAppointments(); // refresh the list
                         }
                         else

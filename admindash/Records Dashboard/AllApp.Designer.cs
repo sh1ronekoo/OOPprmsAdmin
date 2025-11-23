@@ -35,7 +35,7 @@
             // 
             listViewAll.Location = new Point(0, 0);
             listViewAll.Name = "listViewAll";
-            listViewAll.Size = new Size(668, 427);
+            listViewAll.Size = new Size(798, 427);
             listViewAll.TabIndex = 0;
             listViewAll.UseCompatibleStateImageBehavior = false;
             // 
@@ -43,7 +43,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(668, 427);
+            ClientSize = new Size(798, 427);
             Controls.Add(listViewAll);
             FormBorderStyle = FormBorderStyle.None;
             Name = "AllApp";

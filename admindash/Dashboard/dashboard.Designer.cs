@@ -156,7 +156,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(-55, -62);
+            pictureBox1.Location = new Point(-56, -47);
             pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(339, 249);

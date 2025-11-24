@@ -1,4 +1,6 @@
-﻿using System;
+﻿using admindash.Core;
+using MySql.Data.MySqlClient; // Add MySql import
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,14 +9,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient; // Add MySql import
 
 namespace admindash.Records_Dashboard
 {
     public partial class CompletedApp : Form
     {
-        // Now using the centralized connection string from DatabaseHelper
-        private string connectionString = DatabaseHelper.connectionString;
 
         public CompletedApp()
         {
@@ -52,7 +51,7 @@ namespace admindash.Records_Dashboard
 
             try
             {
-                using (var conn = new MySqlConnection(connectionString))
+                using (var conn = DatabaseConfig.GetConnection())
                 {
                     conn.Open();
                     // UPDATED: Added email, current_medication, and additional_notes to the SELECT query

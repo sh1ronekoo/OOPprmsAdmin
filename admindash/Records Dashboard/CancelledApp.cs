@@ -51,7 +51,7 @@ namespace admindash.Records_Dashboard
 
             try
             {
-                using (var conn = new MySqlConnection(connectionString))
+                using (var conn = DatabaseConfig.GetConnection())
                 {
                     conn.Open();
                     // UPDATED: Added email, current_medication, and additional_notes to the SELECT query

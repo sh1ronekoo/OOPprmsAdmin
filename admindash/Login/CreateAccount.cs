@@ -90,5 +90,10 @@ namespace admindash
         {
 
         }
+
+        private void txtCreateUsername_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

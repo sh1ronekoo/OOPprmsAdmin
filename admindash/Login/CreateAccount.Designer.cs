@@ -42,26 +42,28 @@
             // 
             // txtCreatePassword
             // 
-            txtCreatePassword.Location = new Point(40, 213);
+            txtCreatePassword.Location = new Point(46, 284);
+            txtCreatePassword.Margin = new Padding(3, 4, 3, 4);
             txtCreatePassword.Name = "txtCreatePassword";
-            txtCreatePassword.Size = new Size(258, 23);
+            txtCreatePassword.Size = new Size(294, 27);
             txtCreatePassword.TabIndex = 1;
             txtCreatePassword.UseSystemPasswordChar = true;
             // 
             // txtCreateConfirmPassword
             // 
-            txtCreateConfirmPassword.Location = new Point(40, 264);
+            txtCreateConfirmPassword.Location = new Point(46, 352);
+            txtCreateConfirmPassword.Margin = new Padding(3, 4, 3, 4);
             txtCreateConfirmPassword.Name = "txtCreateConfirmPassword";
-            txtCreateConfirmPassword.Size = new Size(257, 23);
+            txtCreateConfirmPassword.Size = new Size(293, 27);
             txtCreateConfirmPassword.TabIndex = 2;
             txtCreateConfirmPassword.UseSystemPasswordChar = true;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(40, 144);
+            label1.Location = new Point(46, 192);
             label1.Name = "label1";
-            label1.Size = new Size(60, 15);
+            label1.Size = new Size(75, 20);
             label1.TabIndex = 3;
             label1.Text = "Username";
             label1.Click += label1_Click;
@@ -69,9 +71,9 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(40, 195);
+            label2.Location = new Point(46, 260);
             label2.Name = "label2";
-            label2.Size = new Size(57, 15);
+            label2.Size = new Size(70, 20);
             label2.TabIndex = 4;
             label2.Text = "Password";
             // 
@@ -95,34 +97,37 @@
             // 
             label5.BackColor = SystemColors.ActiveCaption;
             label5.Font = new Font("Segoe UI Black", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(30, 51);
+            label5.Location = new Point(34, 68);
             label5.Name = "label5";
-            label5.Size = new Size(201, 68);
+            label5.Size = new Size(230, 91);
             label5.TabIndex = 12;
             label5.Text = "Create Your Acount";
             label5.Click += label5_Click;
             // 
             // txtCreateUsername
             // 
-            txtCreateUsername.Location = new Point(40, 162);
+            txtCreateUsername.Location = new Point(46, 216);
+            txtCreateUsername.Margin = new Padding(3, 4, 3, 4);
             txtCreateUsername.Name = "txtCreateUsername";
-            txtCreateUsername.Size = new Size(258, 23);
+            txtCreateUsername.Size = new Size(294, 27);
             txtCreateUsername.TabIndex = 0;
+            txtCreateUsername.TextChanged += txtCreateUsername_TextChanged;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(40, 246);
+            label4.Location = new Point(46, 328);
             label4.Name = "label4";
-            label4.Size = new Size(104, 15);
+            label4.Size = new Size(127, 20);
             label4.TabIndex = 4;
             label4.Text = "Confirm Password";
             // 
             // btnCreateAccount
             // 
-            btnCreateAccount.Location = new Point(120, 312);
+            btnCreateAccount.Location = new Point(137, 416);
+            btnCreateAccount.Margin = new Padding(3, 4, 3, 4);
             btnCreateAccount.Name = "btnCreateAccount";
-            btnCreateAccount.Size = new Size(101, 23);
+            btnCreateAccount.Size = new Size(115, 31);
             btnCreateAccount.TabIndex = 3;
             btnCreateAccount.Text = "Create Account";
             btnCreateAccount.UseVisualStyleBackColor = true;
@@ -130,10 +135,10 @@
             // 
             // CreateAccount
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
-            ClientSize = new Size(331, 373);
+            ClientSize = new Size(378, 497);
             Controls.Add(btnCreateAccount);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -143,6 +148,7 @@
             Controls.Add(txtCreateUsername);
             Controls.Add(txtCreatePassword);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(3, 4, 3, 4);
             Name = "CreateAccount";
             StartPosition = FormStartPosition.CenterScreen;
             ResumeLayout(false);

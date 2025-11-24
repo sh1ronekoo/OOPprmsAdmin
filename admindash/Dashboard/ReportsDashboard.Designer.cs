@@ -81,15 +81,17 @@
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label1);
             panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(750, 528);
+            panel1.Size = new Size(857, 704);
             panel1.TabIndex = 1;
             // 
             // btnExportPdf
             // 
-            btnExportPdf.Location = new Point(644, 435);
+            btnExportPdf.Location = new Point(650, 592);
+            btnExportPdf.Margin = new Padding(3, 4, 3, 4);
             btnExportPdf.Name = "btnExportPdf";
-            btnExportPdf.Size = new Size(94, 23);
+            btnExportPdf.Size = new Size(152, 31);
             btnExportPdf.TabIndex = 1;
             btnExportPdf.Text = "Extract to CSV";
             btnExportPdf.UseVisualStyleBackColor = true;
@@ -99,10 +101,10 @@
             // 
             lblDaily.AutoSize = true;
             lblDaily.Font = new Font("Segoe UI", 11.5F);
-            lblDaily.Location = new Point(436, 238);
+            lblDaily.Location = new Point(498, 317);
             lblDaily.Name = "lblDaily";
             lblDaily.RightToLeft = RightToLeft.Yes;
-            lblDaily.Size = new Size(19, 21);
+            lblDaily.Size = new Size(23, 28);
             lblDaily.TabIndex = 0;
             lblDaily.Text = "0";
             // 
@@ -110,10 +112,10 @@
             // 
             lblMonthly.AutoSize = true;
             lblMonthly.Font = new Font("Segoe UI", 11.5F);
-            lblMonthly.Location = new Point(436, 281);
+            lblMonthly.Location = new Point(498, 375);
             lblMonthly.Name = "lblMonthly";
             lblMonthly.RightToLeft = RightToLeft.Yes;
-            lblMonthly.Size = new Size(19, 21);
+            lblMonthly.Size = new Size(23, 28);
             lblMonthly.TabIndex = 0;
             lblMonthly.Text = "0";
             // 
@@ -121,10 +123,10 @@
             // 
             lblWeekly.AutoSize = true;
             lblWeekly.Font = new Font("Segoe UI", 11.5F);
-            lblWeekly.Location = new Point(436, 260);
+            lblWeekly.Location = new Point(498, 347);
             lblWeekly.Name = "lblWeekly";
             lblWeekly.RightToLeft = RightToLeft.Yes;
-            lblWeekly.Size = new Size(19, 21);
+            lblWeekly.Size = new Size(23, 28);
             lblWeekly.TabIndex = 0;
             lblWeekly.Text = "0";
             // 
@@ -132,9 +134,9 @@
             // 
             lblCancelled.AutoSize = true;
             lblCancelled.Font = new Font("Segoe UI", 11.25F);
-            lblCancelled.Location = new Point(246, 347);
+            lblCancelled.Location = new Point(281, 463);
             lblCancelled.Name = "lblCancelled";
-            lblCancelled.Size = new Size(17, 20);
+            lblCancelled.Size = new Size(22, 25);
             lblCancelled.TabIndex = 0;
             lblCancelled.Text = "0";
             // 
@@ -142,10 +144,10 @@
             // 
             label13.AutoSize = true;
             label13.Font = new Font("Segoe UI", 11.5F);
-            label13.Location = new Point(569, 238);
+            label13.Location = new Point(650, 317);
             label13.Name = "label13";
             label13.RightToLeft = RightToLeft.Yes;
-            label13.Size = new Size(51, 21);
+            label13.Size = new Size(63, 28);
             label13.TabIndex = 0;
             label13.Text = "DAILY";
             label13.TextAlign = ContentAlignment.MiddleRight;
@@ -154,10 +156,10 @@
             // 
             label15.AutoSize = true;
             label15.Font = new Font("Segoe UI", 11.5F);
-            label15.Location = new Point(537, 280);
+            label15.Location = new Point(614, 373);
             label15.Name = "label15";
             label15.RightToLeft = RightToLeft.Yes;
-            label15.Size = new Size(83, 21);
+            label15.Size = new Size(103, 28);
             label15.TabIndex = 0;
             label15.Text = "MONTHLY";
             label15.TextAlign = ContentAlignment.MiddleRight;
@@ -166,10 +168,10 @@
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI", 11.5F);
-            label11.Location = new Point(554, 259);
+            label11.Location = new Point(633, 345);
             label11.Name = "label11";
             label11.RightToLeft = RightToLeft.Yes;
-            label11.Size = new Size(66, 21);
+            label11.Size = new Size(82, 28);
             label11.TabIndex = 0;
             label11.Text = "WEEKLY";
             label11.TextAlign = ContentAlignment.MiddleRight;
@@ -178,9 +180,9 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 11.25F);
-            label9.Location = new Point(79, 347);
+            label9.Location = new Point(90, 463);
             label9.Name = "label9";
-            label9.Size = new Size(89, 20);
+            label9.Size = new Size(113, 25);
             label9.TabIndex = 0;
             label9.Text = "CANCELLED";
             // 
@@ -188,9 +190,9 @@
             // 
             lblDeclined.AutoSize = true;
             lblDeclined.Font = new Font("Segoe UI", 11.25F);
-            lblDeclined.Location = new Point(246, 327);
+            lblDeclined.Location = new Point(281, 436);
             lblDeclined.Name = "lblDeclined";
-            lblDeclined.Size = new Size(17, 20);
+            lblDeclined.Size = new Size(22, 25);
             lblDeclined.TabIndex = 0;
             lblDeclined.Text = "0";
             // 
@@ -198,9 +200,9 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 11.25F);
-            label7.Location = new Point(79, 327);
+            label7.Location = new Point(90, 436);
             label7.Name = "label7";
-            label7.Size = new Size(78, 20);
+            label7.Size = new Size(98, 25);
             label7.TabIndex = 0;
             label7.Text = "DECLINED";
             // 
@@ -208,9 +210,9 @@
             // 
             lblAccepted.AutoSize = true;
             lblAccepted.Font = new Font("Segoe UI", 11.25F);
-            lblAccepted.Location = new Point(246, 307);
+            lblAccepted.Location = new Point(281, 409);
             lblAccepted.Name = "lblAccepted";
-            lblAccepted.Size = new Size(17, 20);
+            lblAccepted.Size = new Size(22, 25);
             lblAccepted.TabIndex = 0;
             lblAccepted.Text = "0";
             // 
@@ -218,9 +220,9 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 11.25F);
-            label5.Location = new Point(79, 307);
+            label5.Location = new Point(90, 409);
             label5.Name = "label5";
-            label5.Size = new Size(80, 20);
+            label5.Size = new Size(101, 25);
             label5.TabIndex = 0;
             label5.Text = "ACCEPTED";
             // 
@@ -228,9 +230,9 @@
             // 
             lblCompleted.AutoSize = true;
             lblCompleted.Font = new Font("Segoe UI", 11.25F);
-            lblCompleted.Location = new Point(246, 267);
+            lblCompleted.Location = new Point(281, 356);
             lblCompleted.Name = "lblCompleted";
-            lblCompleted.Size = new Size(17, 20);
+            lblCompleted.Size = new Size(22, 25);
             lblCompleted.TabIndex = 0;
             lblCompleted.Text = "0";
             // 
@@ -238,9 +240,9 @@
             // 
             lblPending.AutoSize = true;
             lblPending.Font = new Font("Segoe UI", 11.25F);
-            lblPending.Location = new Point(246, 287);
+            lblPending.Location = new Point(281, 383);
             lblPending.Name = "lblPending";
-            lblPending.Size = new Size(17, 20);
+            lblPending.Size = new Size(22, 25);
             lblPending.TabIndex = 0;
             lblPending.Text = "0";
             // 
@@ -248,9 +250,9 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 11.25F);
-            label8.Location = new Point(79, 267);
+            label8.Location = new Point(90, 356);
             label8.Name = "label8";
-            label8.Size = new Size(92, 20);
+            label8.Size = new Size(117, 25);
             label8.TabIndex = 0;
             label8.Text = "COMPLETED";
             // 
@@ -258,9 +260,9 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 11.25F);
-            label3.Location = new Point(79, 287);
+            label3.Location = new Point(90, 383);
             label3.Name = "label3";
-            label3.Size = new Size(72, 20);
+            label3.Size = new Size(92, 25);
             label3.TabIndex = 0;
             label3.Text = "PENDING";
             // 
@@ -268,9 +270,9 @@
             // 
             lblTotalBookings.AutoSize = true;
             lblTotalBookings.Font = new Font("Segoe UI", 26.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblTotalBookings.Location = new Point(151, 180);
+            lblTotalBookings.Location = new Point(173, 240);
             lblTotalBookings.Name = "lblTotalBookings";
-            lblTotalBookings.Size = new Size(39, 47);
+            lblTotalBookings.Size = new Size(49, 60);
             lblTotalBookings.TabIndex = 0;
             lblTotalBookings.Text = "0";
             // 
@@ -278,9 +280,9 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(53, 43);
+            label2.Location = new Point(61, 57);
             label2.Name = "label2";
-            label2.Size = new Size(250, 32);
+            label2.Size = new Size(313, 41);
             label2.TabIndex = 0;
             label2.Text = "REPORTS OVERVIEW";
             // 
@@ -288,9 +290,9 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            label6.Location = new Point(396, 155);
+            label6.Location = new Point(453, 207);
             label6.Name = "label6";
-            label6.Size = new Size(224, 25);
+            label6.Size = new Size(288, 32);
             label6.TabIndex = 0;
             label6.Text = "PERIODIC BREAKDOWN";
             // 
@@ -298,9 +300,9 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            label4.Location = new Point(80, 155);
+            label4.Location = new Point(91, 207);
             label4.Name = "label4";
-            label4.Size = new Size(173, 25);
+            label4.Size = new Size(216, 32);
             label4.TabIndex = 0;
             label4.Text = "BOOKING STATUS";
             // 
@@ -308,19 +310,20 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label1.Location = new Point(104, 228);
+            label1.Location = new Point(119, 304);
             label1.Name = "label1";
-            label1.Size = new Size(141, 21);
+            label1.Size = new Size(175, 28);
             label1.TabIndex = 0;
             label1.Text = "TOTAL BOOKINGS";
             // 
             // ReportsDashboard
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(750, 528);
+            ClientSize = new Size(857, 704);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(3, 4, 3, 4);
             Name = "ReportsDashboard";
             Text = "ReportsDashboard";
             panel1.ResumeLayout(false);

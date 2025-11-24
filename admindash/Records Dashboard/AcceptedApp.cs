@@ -2,12 +2,12 @@
 using System.Data;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using admindash.Core;
 
 namespace admindash.Records_Dashboard
 {
     public partial class AcceptedApp : Form
     {
-        private string connectionString = "Server=oop-prms-iqperia06-3946oop.e.aivencloud.com;Port=19631;Database=oop_project;User ID=avnadmin;Password=AVNS_DC-Fjd1udeFkVwK429X;SslMode=Required;";
         private int selectedAppointmentId = -1; // store the currently selected appointment number
 
         public AcceptedApp()
@@ -49,7 +49,7 @@ namespace admindash.Records_Dashboard
 
             try
             {
-                using (var conn = new MySqlConnection(connectionString))
+                using (var conn = DatabaseConfig.GetConnection())
                 {
                     conn.Open();
                     // UPDATED: Added email, current_medication, and additional_notes to the SELECT query
@@ -169,7 +169,7 @@ namespace admindash.Records_Dashboard
         {
             try
             {
-                using (var conn = new MySqlConnection(connectionString))
+                using (var conn = DatabaseConfig.GetConnection())
                 {
                     conn.Open();
                     string query = "UPDATE booking SET status = @status WHERE appointment_number = @apptNum";

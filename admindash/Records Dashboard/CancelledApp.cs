@@ -8,13 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient; // Add MySql import
+using admindash.Core;
 
 namespace admindash.Records_Dashboard
 {
     public partial class CancelledApp : Form
     {
-        // Now using the centralized connection string from DatabaseHelper
-        private string connectionString = DatabaseHelper.connectionString;
 
         public CancelledApp()
         {

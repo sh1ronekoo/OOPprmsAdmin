@@ -4,11 +4,8 @@ using MySql.Data.MySqlClient;
 
 namespace admindash.Core
 {
-    // ABSTRACTION: This class handles ALL database interaction. 
-    // The UI forms don't need to know about "SELECT" or "UPDATE" queries.
     public class AppointmentService
     {
-        // Polymorphism/Overloading: Fetch all or fetch by status
         public List<Appointment> GetAppointments(string statusFilter = null)
         {
             List<Appointment> list = new List<Appointment>();
@@ -23,7 +20,7 @@ namespace admindash.Core
                     query += " WHERE status = @status";
                 }
 
-                query += " ORDER BY appointment_datetime DESC"; // Default ordering
+                query += " ORDER BY appointment_datetime DESC";
 
                 using (var cmd = new MySqlCommand(query, conn))
                 {
@@ -72,6 +69,29 @@ namespace admindash.Core
             }
         }
 
+        // NEW METHOD: Handles deletion
+        public bool DeleteAppointment(int id)
+        {
+            try
+            {
+                using (var conn = DatabaseConfig.GetConnection())
+                {
+                    conn.Open();
+                    string query = "DELETE FROM booking WHERE appointment_number = @id";
+                    using (var cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@id", id);
+                        int rows = cmd.ExecuteNonQuery();
+                        return rows > 0;
+                    }
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public int GetCount(string status = null)
         {
             using (var conn = DatabaseConfig.GetConnection())
@@ -88,7 +108,6 @@ namespace admindash.Core
             }
         }
 
-        // Specific queries for reports
         public int GetDailyCount() => GetDateCount("DATE(appointment_datetime)=CURDATE()");
         public int GetWeeklyCount() => GetDateCount("YEARWEEK(appointment_datetime)=YEARWEEK(CURDATE())");
         public int GetMonthlyCount() => GetDateCount("MONTH(appointment_datetime)=MONTH(CURDATE()) AND YEAR(appointment_datetime)=YEAR(CURDATE())");

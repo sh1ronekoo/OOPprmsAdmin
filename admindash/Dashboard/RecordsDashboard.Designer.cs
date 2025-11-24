@@ -28,30 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnCancelled = new Panel();
+            panel1 = new Panel();
             panel2 = new Panel();
             btnDeclined = new Button();
             btnAccepted = new Button();
             btnCompleted = new Button();
-            button5 = new Button();
+            btnDelete = new Button();
+            btnCancelled = new Button();
             btnAll = new Button();
-            btnCancelled.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
-            // btnCancelled
+            // panel1
             // 
-            btnCancelled.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            btnCancelled.BackColor = SystemColors.Control;
-            btnCancelled.Controls.Add(panel2);
-            btnCancelled.Controls.Add(btnDeclined);
-            btnCancelled.Controls.Add(btnAccepted);
-            btnCancelled.Controls.Add(btnCompleted);
-            btnCancelled.Controls.Add(button5);
-            btnCancelled.Controls.Add(btnAll);
-            btnCancelled.Location = new Point(0, 0);
-            btnCancelled.Name = "btnCancelled";
-            btnCancelled.Size = new Size(869, 505);
-            btnCancelled.TabIndex = 2;
+            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panel1.BackColor = SystemColors.Control;
+            panel1.Controls.Add(panel2);
+            panel1.Controls.Add(btnDeclined);
+            panel1.Controls.Add(btnAccepted);
+            panel1.Controls.Add(btnCompleted);
+            panel1.Controls.Add(btnDelete);
+            panel1.Controls.Add(btnCancelled);
+            panel1.Controls.Add(btnAll);
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(869, 505);
+            panel1.TabIndex = 2;
             // 
             // panel2
             // 
@@ -90,15 +92,25 @@
             btnCompleted.UseVisualStyleBackColor = true;
             btnCompleted.Click += btnCompleted_Click;
             // 
-            // button5
+            // btnDelete
             // 
-            button5.Location = new Point(360, 34);
-            button5.Name = "button5";
-            button5.Size = new Size(75, 23);
-            button5.TabIndex = 1;
-            button5.Text = "Cancelled";
-            button5.UseVisualStyleBackColor = true;
-            button5.Click += btnCancelled_Click;
+            btnDelete.Location = new Point(759, 34);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(75, 23);
+            btnDelete.TabIndex = 1;
+            btnDelete.Text = "Delete";
+            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
+            // 
+            // btnCancelled
+            // 
+            btnCancelled.Location = new Point(360, 34);
+            btnCancelled.Name = "btnCancelled";
+            btnCancelled.Size = new Size(75, 23);
+            btnCancelled.TabIndex = 1;
+            btnCancelled.Text = "Cancelled";
+            btnCancelled.UseVisualStyleBackColor = true;
+            btnCancelled.Click += btnCancelled_Click;
             // 
             // btnAll
             // 
@@ -115,22 +127,23 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(866, 502);
-            Controls.Add(btnCancelled);
+            Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "RecordsDashboard";
             Text = "RecordsDashboard";
-            btnCancelled.ResumeLayout(false);
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Panel btnCancelled;
+        private Panel panel1;
         private Button btnDeclined;
         private Button btnAccepted;
         private Button btnCompleted;
-        private Button button5;
+        private Button btnCancelled;
         private Button btnAll;
         private Panel panel2;
+        private Button btnDelete;
     }
 }

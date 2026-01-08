@@ -1,6 +1,5 @@
 ﻿using admindash.Dashboard;
 using System;
-using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -8,16 +7,24 @@ namespace admindash
 {
     public partial class dashboard : Form
     {
+        // Keep a reference to MainDashboard
+        private MainDashboard mainDash;
 
         public dashboard()
         {
             InitializeComponent();
+            this.Load += dashboard_Load; // Make sure this event is wired
         }
 
         private void dashboard_Load(object sender, EventArgs e)
         {
-            MainDashboard mainDash = new MainDashboard();
+            // Set Appointments button as active
+            SetActiveButton(btnAppointments);
+
+            // Create MainDashboard and show immediately
+            mainDash = new MainDashboard();
             OpenChildForm(mainDash);
+            mainDash.LoadAppointments();
         }
 
         private void SetActiveButton(Button activeBtn)
@@ -29,15 +36,14 @@ namespace admindash
             activeBtn.BackColor = Color.FromArgb(192, 210, 235);
         }
 
-        // Button click events
-
         private void btnAppointments_Click(object sender, EventArgs e)
         {
             SetActiveButton(btnAppointments);
 
-            MainDashboard mainDash = new MainDashboard();
-            OpenChildForm(mainDash);
+            if (mainDash == null || mainDash.IsDisposed)
+                mainDash = new MainDashboard();
 
+            OpenChildForm(mainDash);
             mainDash.LoadAppointments();
         }
 
@@ -56,9 +62,10 @@ namespace admindash
             ReportsDashboard reportsDash = new ReportsDashboard();
             OpenChildForm(reportsDash);
         }
+
         private void OpenChildForm(Form childForm)
         {
-            panelContent.Controls.Clear(); // remove any existing child form
+            panelContent.Controls.Clear();
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
             childForm.Dock = DockStyle.Fill;
@@ -70,6 +77,7 @@ namespace admindash
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
+            // Go back to Login
             Login login = new Login();
             login.Show();
             this.Hide();

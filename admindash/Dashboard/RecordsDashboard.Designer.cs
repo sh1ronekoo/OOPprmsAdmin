@@ -56,7 +56,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(234, 16);
+            label2.Location = new Point(162, 16);
             label2.Name = "label2";
             label2.Size = new Size(36, 15);
             label2.TabIndex = 5;
@@ -75,7 +75,7 @@
             // 
             txtSearch.Location = new Point(36, 34);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(100, 23);
+            txtSearch.Size = new Size(120, 23);
             txtSearch.TabIndex = 4;
             txtSearch.TextChanged += txtSearch_TextChanged;
             // 
@@ -83,7 +83,7 @@
             // 
             cmbFilter.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbFilter.FormattingEnabled = true;
-            cmbFilter.Location = new Point(234, 34);
+            cmbFilter.Location = new Point(162, 34);
             cmbFilter.Name = "cmbFilter";
             cmbFilter.Size = new Size(121, 23);
             cmbFilter.TabIndex = 3;

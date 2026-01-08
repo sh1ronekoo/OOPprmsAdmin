@@ -96,5 +96,9 @@ namespace admindash.Records_Dashboard
                 MessageBox.Show("Error loading declined appointments: " + ex.Message);
             }
         }
+
+        public void Search(string keyword)
+        {
+        }
     }
 }

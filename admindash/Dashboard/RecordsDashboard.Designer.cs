@@ -29,13 +29,12 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            label2 = new Label();
+            label1 = new Label();
+            txtSearch = new TextBox();
+            cmbFilter = new ComboBox();
             panel2 = new Panel();
-            btnDeclined = new Button();
-            btnAccepted = new Button();
-            btnCompleted = new Button();
             btnDelete = new Button();
-            btnCancelled = new Button();
-            btnAll = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -43,17 +42,52 @@
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel1.BackColor = SystemColors.Control;
+            panel1.Controls.Add(label2);
+            panel1.Controls.Add(label1);
+            panel1.Controls.Add(txtSearch);
+            panel1.Controls.Add(cmbFilter);
             panel1.Controls.Add(panel2);
-            panel1.Controls.Add(btnDeclined);
-            panel1.Controls.Add(btnAccepted);
-            panel1.Controls.Add(btnCompleted);
             panel1.Controls.Add(btnDelete);
-            panel1.Controls.Add(btnCancelled);
-            panel1.Controls.Add(btnAll);
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(869, 505);
             panel1.TabIndex = 2;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(234, 16);
+            label2.Name = "label2";
+            label2.Size = new Size(36, 15);
+            label2.TabIndex = 5;
+            label2.Text = "Filter:";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(36, 16);
+            label1.Name = "label1";
+            label1.Size = new Size(45, 15);
+            label1.TabIndex = 5;
+            label1.Text = "Search:";
+            // 
+            // txtSearch
+            // 
+            txtSearch.Location = new Point(36, 34);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(100, 23);
+            txtSearch.TabIndex = 4;
+            txtSearch.TextChanged += txtSearch_TextChanged;
+            // 
+            // cmbFilter
+            // 
+            cmbFilter.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbFilter.FormattingEnabled = true;
+            cmbFilter.Location = new Point(234, 34);
+            cmbFilter.Name = "cmbFilter";
+            cmbFilter.Size = new Size(121, 23);
+            cmbFilter.TabIndex = 3;
+            cmbFilter.SelectedIndexChanged += cmbFilter_SelectedIndexChanged;
             // 
             // panel2
             // 
@@ -62,65 +96,15 @@
             panel2.Size = new Size(798, 427);
             panel2.TabIndex = 2;
             // 
-            // btnDeclined
-            // 
-            btnDeclined.Location = new Point(279, 34);
-            btnDeclined.Name = "btnDeclined";
-            btnDeclined.Size = new Size(75, 23);
-            btnDeclined.TabIndex = 1;
-            btnDeclined.Text = "Declined";
-            btnDeclined.UseVisualStyleBackColor = true;
-            btnDeclined.Click += btnDeclined_Click;
-            // 
-            // btnAccepted
-            // 
-            btnAccepted.Location = new Point(198, 34);
-            btnAccepted.Name = "btnAccepted";
-            btnAccepted.Size = new Size(75, 23);
-            btnAccepted.TabIndex = 1;
-            btnAccepted.Text = "Accepted";
-            btnAccepted.UseVisualStyleBackColor = true;
-            btnAccepted.Click += btnAccepted_Click;
-            // 
-            // btnCompleted
-            // 
-            btnCompleted.Location = new Point(117, 34);
-            btnCompleted.Name = "btnCompleted";
-            btnCompleted.Size = new Size(75, 23);
-            btnCompleted.TabIndex = 1;
-            btnCompleted.Text = "Completed";
-            btnCompleted.UseVisualStyleBackColor = true;
-            btnCompleted.Click += btnCompleted_Click;
-            // 
             // btnDelete
             // 
-            btnDelete.Location = new Point(759, 34);
+            btnDelete.Location = new Point(759, 33);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(75, 23);
             btnDelete.TabIndex = 1;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = true;
             btnDelete.Click += btnDelete_Click;
-            // 
-            // btnCancelled
-            // 
-            btnCancelled.Location = new Point(360, 34);
-            btnCancelled.Name = "btnCancelled";
-            btnCancelled.Size = new Size(75, 23);
-            btnCancelled.TabIndex = 1;
-            btnCancelled.Text = "Cancelled";
-            btnCancelled.UseVisualStyleBackColor = true;
-            btnCancelled.Click += btnCancelled_Click;
-            // 
-            // btnAll
-            // 
-            btnAll.Location = new Point(36, 34);
-            btnAll.Name = "btnAll";
-            btnAll.Size = new Size(75, 23);
-            btnAll.TabIndex = 1;
-            btnAll.Text = "All";
-            btnAll.UseVisualStyleBackColor = true;
-            btnAll.Click += btnAll_Click;
             // 
             // RecordsDashboard
             // 
@@ -132,18 +116,18 @@
             Name = "RecordsDashboard";
             Text = "RecordsDashboard";
             panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
         private Panel panel1;
-        private Button btnDeclined;
-        private Button btnAccepted;
-        private Button btnCompleted;
-        private Button btnCancelled;
-        private Button btnAll;
         private Panel panel2;
         private Button btnDelete;
+        private ComboBox cmbFilter;
+        private TextBox txtSearch;
+        private Label label2;
+        private Label label1;
     }
 }

@@ -170,5 +170,9 @@ namespace admindash.Records_Dashboard
                 MessageBox.Show("Database error: " + ex.Message);
             }
         }
+        public void Search(string keyword)
+        {
+        }
+
     }
 }

@@ -58,7 +58,7 @@ namespace admindash.Records_Dashboard
             }
         }
 
-        private void LoadAllAppointments()
+        private void LoadAllAppointments(string keyword = "")
         {
             listViewAll.Items.Clear();
 
@@ -67,35 +67,55 @@ namespace admindash.Records_Dashboard
                 using (var conn = DatabaseConfig.GetConnection())
                 {
                     conn.Open();
-                    string query = "SELECT appointment_number, patient_name, appointment_datetime, status, gender, age, date_of_birth, phone_number, email, current_medication, additional_notes " +
-                                   "FROM booking ORDER BY appointment_datetime DESC";
+
+                    string query =
+                        "SELECT appointment_number, patient_name, appointment_datetime, status, gender, age, date_of_birth, phone_number, email, current_medication, additional_notes " +
+                        "FROM booking " +
+                        "WHERE (@keyword = '' OR " +
+                        "appointment_number LIKE @kw OR " +
+                        "patient_name LIKE @kw OR " +
+                        "phone_number LIKE @kw OR " +
+                        "email LIKE @kw OR " +
+                        "status LIKE @kw) " +
+                        "ORDER BY appointment_datetime DESC";
 
                     using (var cmd = new MySqlCommand(query, conn))
-                    using (var reader = cmd.ExecuteReader())
                     {
-                        while (reader.Read())
-                        {
-                            ListViewItem item = new ListViewItem(reader["appointment_number"].ToString());
-                            item.SubItems.Add(reader["patient_name"].ToString());
-                            item.SubItems.Add(Convert.ToDateTime(reader["appointment_datetime"]).ToString("yyyy-MM-dd hh:mm tt"));
-                            item.SubItems.Add(reader["status"].ToString());
-                            item.SubItems.Add(reader["gender"].ToString());
-                            item.SubItems.Add(reader["age"].ToString());
-                            item.SubItems.Add(Convert.ToDateTime(reader["date_of_birth"]).ToString("yyyy-MM-dd"));
-                            item.SubItems.Add(reader["phone_number"].ToString());
-                            item.SubItems.Add(reader["email"].ToString());
-                            item.SubItems.Add(reader["current_medication"].ToString());
-                            item.SubItems.Add(reader["additional_notes"].ToString());
+                        cmd.Parameters.AddWithValue("@keyword", keyword);
+                        cmd.Parameters.AddWithValue("@kw", $"%{keyword}%");
 
-                            listViewAll.Items.Add(item);
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                ListViewItem item = new ListViewItem(reader["appointment_number"].ToString());
+                                item.SubItems.Add(reader["patient_name"].ToString());
+                                item.SubItems.Add(Convert.ToDateTime(reader["appointment_datetime"]).ToString("yyyy-MM-dd hh:mm tt"));
+                                item.SubItems.Add(reader["status"].ToString());
+                                item.SubItems.Add(reader["gender"].ToString());
+                                item.SubItems.Add(reader["age"].ToString());
+                                item.SubItems.Add(Convert.ToDateTime(reader["date_of_birth"]).ToString("yyyy-MM-dd"));
+                                item.SubItems.Add(reader["phone_number"].ToString());
+                                item.SubItems.Add(reader["email"].ToString());
+                                item.SubItems.Add(reader["current_medication"].ToString());
+                                item.SubItems.Add(reader["additional_notes"].ToString());
+
+                                listViewAll.Items.Add(item);
+                            }
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error loading all appointments: " + ex.Message);
+                MessageBox.Show("Error loading appointments: " + ex.Message);
             }
         }
+
+        public void Search(string keyword)
+        {
+            LoadAllAppointments(keyword);
+        }
+
     }
 }

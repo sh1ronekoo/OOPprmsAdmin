@@ -7,5 +7,6 @@ namespace admindash.Core
     {
         int GetSelectedAppointmentId();
         void RefreshData();
+        void Search(string keyword); // 👈 add this
     }
 }

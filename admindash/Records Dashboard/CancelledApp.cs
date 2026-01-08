@@ -96,5 +96,8 @@ namespace admindash.Records_Dashboard
                 MessageBox.Show("Error loading cancelled appointments: " + ex.Message);
             }
         }
+        public void Search(string keyword)
+        {
+        }
     }
 }

@@ -96,5 +96,8 @@ namespace admindash.Records_Dashboard
                 MessageBox.Show("Error loading completed appointments: " + ex.Message);
             }
         }
+        public void Search(string keyword)
+        {
+        }
     }
 }

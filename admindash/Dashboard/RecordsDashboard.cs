@@ -2,6 +2,7 @@
 using admindash.Records_Dashboard;
 using System;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace admindash.Dashboard
 {
@@ -13,13 +14,23 @@ namespace admindash.Dashboard
         {
             InitializeComponent();
             this.Load += RecordsDashboard_Load;
+            txtSearch.TextChanged += txtSearch_TextChanged;
         }
 
         private void RecordsDashboard_Load(object sender, EventArgs e)
         {
-            // Default load
-            LoadFormInPanel(new AllApp());
+            cmbFilter.Items.AddRange(new string[]
+            {
+        "All",
+        "Accepted",
+        "Completed",
+        "Cancelled",
+        "Declined"
+            });
+
+            cmbFilter.SelectedIndex = 0; // Default = All
         }
+
 
         private void LoadFormInPanel(Form form)
         {
@@ -74,12 +85,47 @@ namespace admindash.Dashboard
         }
 
         // Navigation Buttons
-        private void btnAll_Click(object sender, EventArgs e) => LoadFormInPanel(new AllApp());
-        private void btnAccepted_Click(object sender, EventArgs e) => LoadFormInPanel(new AcceptedApp());
-        private void btnCompleted_Click(object sender, EventArgs e) => LoadFormInPanel(new CompletedApp());
-        private void btnCancelled_Click(object sender, EventArgs e) => LoadFormInPanel(new CancelledApp());
-        private void btnDeclined_Click(object sender, EventArgs e) => LoadFormInPanel(new DeclinedApp());
 
         private void listViewRecords_SelectedIndexChanged(object sender, EventArgs e) { }
+
+        private void cmbFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cmbFilter.SelectedItem.ToString())
+            {
+                case "All":
+                    LoadFormInPanel(new AllApp());
+                    break;
+
+                case "Accepted":
+                    LoadFormInPanel(new AcceptedApp());
+                    break;
+
+                case "Completed":
+                    LoadFormInPanel(new CompletedApp());
+                    break;
+
+                case "Cancelled":
+                    LoadFormInPanel(new CancelledApp());
+                    break;
+
+                case "Declined":
+                    LoadFormInPanel(new DeclinedApp());
+                    break;
+            }
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (_activeForm is IRecordView recordView)
+            {
+                string keyword = txtSearch.Text.Trim();
+
+                if (string.IsNullOrWhiteSpace(keyword))
+                    recordView.RefreshData();
+                else
+                    recordView.Search(keyword);
+            }
+        }
+
     }
 }

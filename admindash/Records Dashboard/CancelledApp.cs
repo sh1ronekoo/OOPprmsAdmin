@@ -30,14 +30,7 @@ namespace admindash.Records_Dashboard
             listViewCancelled.Columns.Add("Appointment No.", 120);
             listViewCancelled.Columns.Add("Patient Name", 150);
             listViewCancelled.Columns.Add("Appointment Date & Time", 200);
-            listViewCancelled.Columns.Add("Status", 120);
-            listViewCancelled.Columns.Add("Gender", 80);
-            listViewCancelled.Columns.Add("Age", 50);
-            listViewCancelled.Columns.Add("DOB", 100);
-            listViewCancelled.Columns.Add("Phone No.", 120);
-            listViewCancelled.Columns.Add("Email", 120);
-            listViewCancelled.Columns.Add("Medication", 150);
-            listViewCancelled.Columns.Add("Additional Notes", 200);
+            listViewCancelled.Columns.Add("Cancellation Reason", 300);
 
             LoadCancelledAppointments();
         }
@@ -66,7 +59,7 @@ namespace admindash.Records_Dashboard
                 using (var conn = DatabaseConfig.GetConnection())
                 {
                     conn.Open();
-                    string query = "SELECT appointment_number, patient_name, appointment_datetime, status, gender, age, date_of_birth, phone_number, email, current_medication, additional_notes " +
+                    string query = "SELECT appointment_number, patient_name, appointment_datetime, cancellation_reason " +
                                    "FROM booking WHERE status = 'Cancelled' ORDER BY appointment_datetime DESC";
 
                     using (var cmd = new MySqlCommand(query, conn))
@@ -77,14 +70,7 @@ namespace admindash.Records_Dashboard
                             ListViewItem item = new ListViewItem(reader["appointment_number"].ToString());
                             item.SubItems.Add(reader["patient_name"].ToString());
                             item.SubItems.Add(Convert.ToDateTime(reader["appointment_datetime"]).ToString("yyyy-MM-dd hh:mm tt"));
-                            item.SubItems.Add(reader["status"].ToString());
-                            item.SubItems.Add(reader["gender"].ToString());
-                            item.SubItems.Add(reader["age"].ToString());
-                            item.SubItems.Add(Convert.ToDateTime(reader["date_of_birth"]).ToString("yyyy-MM-dd"));
-                            item.SubItems.Add(reader["phone_number"].ToString());
-                            item.SubItems.Add(reader["email"].ToString());
-                            item.SubItems.Add(reader["current_medication"].ToString());
-                            item.SubItems.Add(reader["additional_notes"].ToString());
+                            item.SubItems.Add(reader["cancellation_reason"].ToString());
 
                             listViewCancelled.Items.Add(item);
                         }

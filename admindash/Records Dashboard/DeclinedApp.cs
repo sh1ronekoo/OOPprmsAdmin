@@ -30,7 +30,6 @@ namespace admindash.Records_Dashboard
             listViewDeclined.Columns.Add("Appointment No.", 120);
             listViewDeclined.Columns.Add("Patient Name", 150);
             listViewDeclined.Columns.Add("Appointment Date & Time", 200);
-            listViewDeclined.Columns.Add("Status", 120);
             listViewDeclined.Columns.Add("Gender", 80);
             listViewDeclined.Columns.Add("Age", 50);
             listViewDeclined.Columns.Add("DOB", 100);
@@ -66,7 +65,7 @@ namespace admindash.Records_Dashboard
                 using (var conn = DatabaseConfig.GetConnection())
                 {
                     conn.Open();
-                    string query = "SELECT appointment_number, patient_name, appointment_datetime, status, gender, age, date_of_birth, phone_number, email, current_medication, additional_notes " +
+                    string query = "SELECT appointment_number, patient_name, appointment_datetime, gender, age, date_of_birth, phone_number, email, current_medication, additional_notes " +
                                    "FROM booking WHERE status = 'Declined' ORDER BY appointment_datetime DESC";
 
                     using (var cmd = new MySqlCommand(query, conn))
@@ -77,7 +76,6 @@ namespace admindash.Records_Dashboard
                             ListViewItem item = new ListViewItem(reader["appointment_number"].ToString());
                             item.SubItems.Add(reader["patient_name"].ToString());
                             item.SubItems.Add(Convert.ToDateTime(reader["appointment_datetime"]).ToString("yyyy-MM-dd hh:mm tt"));
-                            item.SubItems.Add(reader["status"].ToString());
                             item.SubItems.Add(reader["gender"].ToString());
                             item.SubItems.Add(reader["age"].ToString());
                             item.SubItems.Add(Convert.ToDateTime(reader["date_of_birth"]).ToString("yyyy-MM-dd"));

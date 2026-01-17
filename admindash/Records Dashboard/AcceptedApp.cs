@@ -30,7 +30,6 @@ namespace admindash.Records_Dashboard
             listViewAccepted.Columns.Add("Appointment No.", 120);
             listViewAccepted.Columns.Add("Patient Name", 150);
             listViewAccepted.Columns.Add("Appointment Date & Time", 200);
-            listViewAccepted.Columns.Add("Status", 120);
             listViewAccepted.Columns.Add("Gender", 80);
             listViewAccepted.Columns.Add("Age", 50);
             listViewAccepted.Columns.Add("DOB", 100);
@@ -66,7 +65,7 @@ namespace admindash.Records_Dashboard
                 using (var conn = DatabaseConfig.GetConnection())
                 {
                     conn.Open();
-                    string query = "SELECT appointment_number, patient_name, appointment_datetime, status, gender, age, date_of_birth, phone_number, email, current_medication, additional_notes " +
+                    string query = "SELECT appointment_number, patient_name, appointment_datetime, gender, age, date_of_birth, phone_number, email, current_medication, additional_notes " +
                                    "FROM booking WHERE status = 'Accepted' ORDER BY appointment_datetime DESC";
 
                     using (var cmd = new MySqlCommand(query, conn))
@@ -77,7 +76,6 @@ namespace admindash.Records_Dashboard
                             ListViewItem item = new ListViewItem(reader["appointment_number"].ToString());
                             item.SubItems.Add(reader["patient_name"].ToString());
                             item.SubItems.Add(Convert.ToDateTime(reader["appointment_datetime"]).ToString("yyyy-MM-dd hh:mm tt"));
-                            item.SubItems.Add(reader["status"].ToString());
                             item.SubItems.Add(reader["gender"].ToString());
                             item.SubItems.Add(reader["age"].ToString());
                             item.SubItems.Add(Convert.ToDateTime(reader["date_of_birth"]).ToString("yyyy-MM-dd"));
@@ -105,18 +103,20 @@ namespace admindash.Records_Dashboard
                 return;
             }
 
-            var confirmResult = MessageBox.Show(
-                $"Are you sure you want to mark appointment No. {selectedAppointmentId} as COMPLETED?",
-                "Confirm Completion",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
-            );
-
-            if (confirmResult == DialogResult.Yes)
+            using (var form = new CompleteAppointmentForm())
             {
-                UpdateBookingStatus(selectedAppointmentId, "Completed");
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    UpdateCompletedAppointment(
+                        selectedAppointmentId,
+                        form.Diagnosis,
+                        form.Findings,
+                        form.Prescription
+                    );
+                }
             }
         }
+
 
         private void btnCancelBook_Click(object sender, EventArgs e)
         {
@@ -126,50 +126,87 @@ namespace admindash.Records_Dashboard
                 return;
             }
 
-            var confirmResult = MessageBox.Show(
-                $"Are you sure you want to CANCEL appointment No. {selectedAppointmentId}?",
-                "Confirm Cancellation",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning
-            );
-
-            if (confirmResult == DialogResult.Yes)
+            using (var form = new CancelAppointmentForm())
             {
-                UpdateBookingStatus(selectedAppointmentId, "Cancelled");
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    UpdateCancelledAppointment(
+                        selectedAppointmentId,
+                        form.CancellationReason
+                    );
+                }
             }
         }
 
-        private void UpdateBookingStatus(int appointmentNumber, string newStatus)
+        private void UpdateCompletedAppointment(
+            int appointmentNumber,
+            string diagnosis,
+            string findings,
+            string prescription)
         {
             try
             {
                 using (var conn = DatabaseConfig.GetConnection())
                 {
                     conn.Open();
-                    string query = "UPDATE booking SET status = @status WHERE appointment_number = @apptNum";
+                        string query = @"UPDATE booking 
+                                SET status = 'Completed',
+                                diagnosis = @diagnosis,
+                                findings = @findings,
+                                prescription = @prescription
+                                WHERE appointment_number = @apptNum";
+
                     using (var cmd = new MySqlCommand(query, conn))
                     {
-                        cmd.Parameters.AddWithValue("@status", newStatus);
+                        cmd.Parameters.AddWithValue("@diagnosis", diagnosis);
+                        cmd.Parameters.AddWithValue("@findings", findings);
+                        cmd.Parameters.AddWithValue("@prescription", prescription);
                         cmd.Parameters.AddWithValue("@apptNum", appointmentNumber);
-                        int rows = cmd.ExecuteNonQuery();
 
-                        if (rows > 0)
-                        {
-                            MessageBox.Show($"Appointment status changed to '{newStatus}' successfully.");
-                            LoadAcceptedAppointments(); // refresh the list
-                        }
-                        else
-                        {
-                            MessageBox.Show("Failed to update appointment.");
-                        }
+                    cmd.ExecuteNonQuery();
                     }
                 }
+
+                MessageBox.Show("Appointment marked as COMPLETED.");
+                LoadAcceptedAppointments();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Database error: " + ex.Message);
             }
         }
+
+        private void UpdateCancelledAppointment(
+            int appointmentNumber,
+            string reason)
+        {
+            try
+            {
+                using (var conn = DatabaseConfig.GetConnection())
+                {
+                    conn.Open();
+                        string query = @"UPDATE booking
+                        SET status = 'Cancelled',
+                        cancellation_reason = @reason
+                        WHERE appointment_number = @apptNum";
+
+                    using (var cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@reason", reason);
+                        cmd.Parameters.AddWithValue("@apptNum", appointmentNumber);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+                MessageBox.Show("Appointment cancelled successfully.");
+                LoadAcceptedAppointments();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Database error: " + ex.Message);
+            }
+        }
+
         public void Search(string keyword)
         {
         }

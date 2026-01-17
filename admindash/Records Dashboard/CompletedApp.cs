@@ -30,14 +30,9 @@ namespace admindash.Records_Dashboard
             listViewCompleted.Columns.Add("Appointment No.", 120);
             listViewCompleted.Columns.Add("Patient Name", 150);
             listViewCompleted.Columns.Add("Appointment Date & Time", 200);
-            listViewCompleted.Columns.Add("Status", 120);
-            listViewCompleted.Columns.Add("Gender", 80);
-            listViewCompleted.Columns.Add("Age", 50);
-            listViewCompleted.Columns.Add("DOB", 100);
-            listViewCompleted.Columns.Add("Phone No.", 120);
-            listViewCompleted.Columns.Add("Email", 120);
-            listViewCompleted.Columns.Add("Medication", 150);
-            listViewCompleted.Columns.Add("Additional Notes", 200);
+            listViewCompleted.Columns.Add("Diagnosis", 120);
+            listViewCompleted.Columns.Add("Findings", 150);
+            listViewCompleted.Columns.Add("Prescription", 150);
 
             LoadCompletedAppointments();
         }
@@ -66,7 +61,7 @@ namespace admindash.Records_Dashboard
                 using (var conn = DatabaseConfig.GetConnection())
                 {
                     conn.Open();
-                    string query = "SELECT appointment_number, patient_name, appointment_datetime, status, gender, age, date_of_birth, phone_number, email, current_medication, additional_notes " +
+                    string query = "SELECT appointment_number, patient_name, appointment_datetime, diagnosis, findings, prescription " +
                                    "FROM booking WHERE status = 'Completed' ORDER BY appointment_datetime DESC";
 
                     using (var cmd = new MySqlCommand(query, conn))
@@ -77,14 +72,9 @@ namespace admindash.Records_Dashboard
                             ListViewItem item = new ListViewItem(reader["appointment_number"].ToString());
                             item.SubItems.Add(reader["patient_name"].ToString());
                             item.SubItems.Add(Convert.ToDateTime(reader["appointment_datetime"]).ToString("yyyy-MM-dd hh:mm tt"));
-                            item.SubItems.Add(reader["status"].ToString());
-                            item.SubItems.Add(reader["gender"].ToString());
-                            item.SubItems.Add(reader["age"].ToString());
-                            item.SubItems.Add(Convert.ToDateTime(reader["date_of_birth"]).ToString("yyyy-MM-dd"));
-                            item.SubItems.Add(reader["phone_number"].ToString());
-                            item.SubItems.Add(reader["email"].ToString());
-                            item.SubItems.Add(reader["current_medication"].ToString());
-                            item.SubItems.Add(reader["additional_notes"].ToString());
+                            item.SubItems.Add(reader["diagnosis"].ToString());
+                            item.SubItems.Add(reader["findings"].ToString());
+                            item.SubItems.Add(reader["prescription"].ToString());
 
                             listViewCompleted.Items.Add(item);
                         }
